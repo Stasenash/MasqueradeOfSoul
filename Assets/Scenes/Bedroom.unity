@@ -410,6 +410,51 @@ RectTransform:
   m_AnchoredPosition: {x: -1, y: 165}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &679337251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 679337253}
+  - component: {fileID: 679337252}
+  m_Layer: 0
+  m_Name: EntryPoint_Bedroom_From_Corridor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &679337252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679337251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 427b823a2ab232249a0ea29f9101ff5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnId: 
+--- !u!4 &679337253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679337251}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.185519, y: 4.6853943, z: -7.8655486}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &729657537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,6 +1262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eIcon: {fileID: 1721597634}
   targetScene: Corridor
+  targetSpawnId: Corridor_From_Bedroom
 --- !u!61 &1618184979
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1344,6 +1390,7 @@ GameObject:
   - component: {fileID: 1662823779}
   - component: {fileID: 1662823783}
   - component: {fileID: 1662823784}
+  - component: {fileID: 1662823785}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -1517,6 +1564,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallRenderer: {fileID: 1134865170}
+--- !u!114 &1662823785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662823778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f3b7930f10b0b44b91597bc29f0f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1674523206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,3 +2089,4 @@ SceneRoots:
   - {fileID: 1674523210}
   - {fileID: 1514728585}
   - {fileID: 1618184981}
+  - {fileID: 679337253}
