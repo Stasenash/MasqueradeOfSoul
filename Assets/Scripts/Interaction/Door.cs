@@ -9,6 +9,7 @@ public class Door : Interactable
 
     public override void Interact()
     {
+        Debug.Log("Set spawn: " + targetSpawnId);
         SpawnManager.Instance.nextSpawnId = targetSpawnId;
         SceneLoader.Instance.LoadScene(targetScene);
     }
