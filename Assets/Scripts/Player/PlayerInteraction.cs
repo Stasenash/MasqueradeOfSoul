@@ -16,22 +16,46 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out Interactable interactable))
-        {
-            current = interactable;
-            current.OnFocus();
-        }
+        if (!other.TryGetComponent(out Interactable interactable))
+            return;
+
+        SetCurrent(interactable);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.TryGetComponent(out Interactable interactable))
+        if (!other.TryGetComponent(out Interactable interactable))
+            return;
+
+        if (current == interactable)
         {
-            if (current == interactable)
-            {
-                current.OnUnfocus();
-                current = null;
-            }
+            ClearCurrent();
         }
+    }
+
+    private void SetCurrent(Interactable interactable)
+    {
+        if (current == interactable)
+            return;
+
+        if (current != null)
+            current.SetFocused(false);
+
+        current = interactable;
+        current.SetFocused(true);
+    }
+
+    private void ClearCurrent()
+    {
+        if (current != null)
+            current.SetFocused(false);
+
+        current = null;
+    }
+
+    // ÊĞÈÒÈ×ÍÎ: ñòğàõîâêà
+    private void OnDisable()
+    {
+        ClearCurrent();
     }
 }

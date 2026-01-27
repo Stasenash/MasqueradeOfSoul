@@ -9,6 +9,7 @@ public class InspectManager : MonoBehaviour
 
     [SerializeField] private Canvas canvas;
     [SerializeField] private Image inspectImage;
+    [SerializeField] private Image background;
 
     private bool isActive;
 
@@ -39,6 +40,7 @@ public class InspectManager : MonoBehaviour
     {
         inspectImage.sprite = sprite;
         canvas.gameObject.SetActive(true);
+        background.gameObject.SetActive(true);
         isActive = true;
 
         Time.timeScale = 0f;
@@ -47,6 +49,7 @@ public class InspectManager : MonoBehaviour
     public void Close()
     {
         canvas.gameObject.SetActive(false);
+        background.gameObject.SetActive(false);
         inspectImage.sprite = null;
         isActive = false;
 

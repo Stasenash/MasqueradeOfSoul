@@ -4,7 +4,18 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-    public virtual void OnFocus() { }
-    public virtual void OnUnfocus() { }
+    [SerializeField] protected GameObject eIcon;
+
+    protected virtual void Awake()
+    {
+        if (eIcon) eIcon.SetActive(false);
+    }
+
+    public virtual void SetFocused(bool focused)
+    {
+        if (eIcon)
+            eIcon.SetActive(focused);
+    }
+
     public abstract void Interact();
 }
