@@ -8,9 +8,8 @@ public class MemoryItem : InspectableItem
 
     public override void Interact()
     {
-        if (collected) return;
-
         base.Interact(); // открыть осмотр
+        if (collected) return;
 
         collected = true;
         MemoryManager.Instance.CollectMemory();
