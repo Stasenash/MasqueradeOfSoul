@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AOC_Mask_3
+  m_Controller: {fileID: 9100000, guid: 5909212d9f4d5604ca870694631a84d3, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 2eebc74666c694c40b72256c358ec2bb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0f4e7de4a384b7640a826f110fc0d1dc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a8d0e8bfcc86a6e478c3d1d7d28be723, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: de7f8bd05fbdc0b4baf17e249bc2894d, type: 2}

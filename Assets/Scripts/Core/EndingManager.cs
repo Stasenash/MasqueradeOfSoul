@@ -20,7 +20,7 @@ public class EndingManager : MonoBehaviour
 
     public EndingType GetEnding()
     {
-        if (MemoryManager.Instance.collectedMemories >=
+        if (MemoryManager.Instance.CollectedCount >=
             MemoryManager.Instance.totalMemories)
             return EndingType.Good;
 

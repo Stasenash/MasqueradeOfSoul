@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class MemoryItem : InspectableItem
 {
-    private bool collected;
+    [SerializeField] private string memoryId;
 
     public override void Interact()
     {
-        base.Interact(); // открыть осмотр
-        if (collected) return;
-
-        collected = true;
-        MemoryManager.Instance.CollectMemory();
+        base.Interact();
+        if (MemoryManager.Instance.IsMemoryCollected(memoryId))
+            return;
+        
+        MemoryManager.Instance.CollectMemory(memoryId);
     }
 }
