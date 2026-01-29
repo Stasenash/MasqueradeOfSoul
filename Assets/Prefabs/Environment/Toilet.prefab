@@ -248,6 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eIcon: {fileID: 6970151479989640671}
   inspectSprite: {fileID: 21300000, guid: e9b9340fd471f9c418ba0cf8da6ea605, type: 3}
+  memoryId: 
 --- !u!1 &6970151479989640671
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,14 +275,14 @@ RectTransform:
   m_GameObject: {fileID: 6970151479989640671}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -8}
-  m_LocalScale: {x: 11.568772, y: 11.568772, z: 11.568772}
+  m_LocalScale: {x: 7.376365, y: 7.376365, z: 7.376365}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2191939055906095319}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: 165}
+  m_AnchoredPosition: {x: -19, y: 173}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &78919808819075132
@@ -325,7 +326,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e56e96674ccffc546bf6630cc8409fc5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b8de2c1964312854abb4f866e8849f34, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

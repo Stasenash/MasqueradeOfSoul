@@ -96,5 +96,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalLight: {fileID: 6567046330147821729}
-  minIntensity: 0.1
+  minIntensity: 0.3
   maxIntensity: 1
