@@ -6,11 +6,17 @@ public class Door : Interactable
 {
     [SerializeField] private string targetScene;
     [SerializeField] private string targetSpawnId;
+    [SerializeField] private bool requiresConfirmation;
 
     public override void Interact()
     {
-        Debug.Log("Set spawn: " + targetSpawnId);
         SpawnManager.Instance.nextSpawnId = targetSpawnId;
+        if (requiresConfirmation)
+        {
+            ExitConfirmController.Instance.Show(targetScene);
+            return;
+        }
+        Debug.Log("Set spawn: " + targetSpawnId);
         SceneLoader.Instance.LoadScene(targetScene);
     }
 }
