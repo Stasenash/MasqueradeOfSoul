@@ -17,7 +17,7 @@ public class PlayerVisualController : MonoBehaviour
         if (animator == null)
             animator = GetComponent<Animator>();
 
-        animator.enabled = false;
+        animator.enabled = true;
     }
 
     public int MaskCount => maskOverrides.Length;
@@ -31,21 +31,9 @@ public class PlayerVisualController : MonoBehaviour
         else
             target = maskOverrides[Mathf.Clamp(stage, 0, maskOverrides.Length - 1)];
 
-        // ÂÀÆÍÎ: âêëş÷àåì Animator ÏÅĞÂÛÉ ĞÀÇ ÂÑÅÃÄÀ
-        if (!initialized)
-        {
-            animator.runtimeAnimatorController = target;
-            animator.enabled = true;
-            animator.Update(0f);
-
-            current = target;
-            initialized = true;
+        if (animator.runtimeAnimatorController == target)
             return;
-        }
 
-        if (current == target) return;
-
-        current = target;
         animator.runtimeAnimatorController = target;
         animator.Update(0f);
     }
