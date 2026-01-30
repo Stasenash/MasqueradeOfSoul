@@ -1,29 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class EndingManager : MonoBehaviour
 {
     public static EndingManager Instance;
 
+    [Header("Videos")]
+    [SerializeField] private VideoClip goodEnding;
+    [SerializeField] private VideoClip badEnding;
+
+    [Header("Conditions")]
+    [SerializeField] private int totalMemoriesRequired = 6;
+
     void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
-    public EndingType GetEnding()
+    public void PlayEnding()
     {
-        if (MemoryManager.Instance.CollectedCount >=
-            MemoryManager.Instance.totalMemories)
-            return EndingType.Good;
+        // ’Œ–Œÿ¿ﬂ ÍÓÌˆÓ‚Í‡
+        if (MemoryManager.Instance.CollectedCount >= totalMemoriesRequired)
+        {
+            Play(goodEnding);
+        }
+        else // œÀŒ’¿ﬂ
+        {
+            Play(badEnding);
+        }
+    }
 
-        return EndingType.Bad;
+    private void Play(VideoClip clip)
+    {
+        VideoSequence.Instance.Play(
+            clip: clip,
+            allowSkip: false,
+            quitAtEnd: true
+        );
     }
 }

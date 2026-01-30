@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 public class InspectManager : MonoBehaviour
 {
    public static InspectManager Instance;
+   public event Action OnInspectClosed;
 
     [SerializeField] private Canvas canvas;
     [SerializeField] private Image inspectImage;
@@ -54,5 +56,6 @@ public class InspectManager : MonoBehaviour
         isActive = false;
 
         Time.timeScale = 1f;
+        OnInspectClosed?.Invoke();
     }
 }

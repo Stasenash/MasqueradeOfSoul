@@ -534,7 +534,7 @@ PrefabInstance:
     - target: {fileID: 1384645005914834647, guid: f53d3991c02fca44e8e24e6fcdbd47b6, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1066308677}
     - target: {fileID: 2262465781833150952, guid: f53d3991c02fca44e8e24e6fcdbd47b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.82
@@ -636,6 +636,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5301538052090784657, guid: 5ba5427f5ad33ea44b824b40859d283f, type: 3}
+      propertyPath: wallRenderer
+      value: 
+      objectReference: {fileID: 607495017}
     - target: {fileID: 5338574486962558028, guid: 5ba5427f5ad33ea44b824b40859d283f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -668,6 +672,11 @@ MonoBehaviour:
   animator: {fileID: 0}
   baseController: {fileID: 0}
   maskOverrides: []
+--- !u!4 &1066308677 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2555302112073903120, guid: 5ba5427f5ad33ea44b824b40859d283f, type: 3}
+  m_PrefabInstance: {fileID: 1066308674}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1160664286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -942,6 +951,10 @@ PrefabInstance:
       propertyPath: memoryId
       value: photoframe
       objectReference: {fileID: 0}
+    - target: {fileID: 2332639655532367464, guid: fe4fb3d9487eafa48bd1af205c5ae360, type: 3}
+      propertyPath: memoryVideo
+      value: 
+      objectReference: {fileID: 32900000, guid: 2fb3a357b1970784eace9c006ed91c98, type: 3}
     - target: {fileID: 2332639655532367464, guid: fe4fb3d9487eafa48bd1af205c5ae360, type: 3}
       propertyPath: inspectSprite
       value: 

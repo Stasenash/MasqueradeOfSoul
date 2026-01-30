@@ -227,6 +227,10 @@ PrefabInstance:
       value: toothbrush
       objectReference: {fileID: 0}
     - target: {fileID: 5257968217091880203, guid: 127fe31488e629f4cae51830a1231310, type: 3}
+      propertyPath: memoryVideo
+      value: 
+      objectReference: {fileID: 32900000, guid: 30cba850ddcd6b749b8a40def28bd4bf, type: 3}
+    - target: {fileID: 5257968217091880203, guid: 127fe31488e629f4cae51830a1231310, type: 3}
       propertyPath: inspectSprite
       value: 
       objectReference: {fileID: 21300000, guid: 918eaa06a90ab054fa4b0b4809c424a2, type: 3}
@@ -807,6 +811,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5301538052090784657, guid: 5ba5427f5ad33ea44b824b40859d283f, type: 3}
+      propertyPath: wallRenderer
+      value: 
+      objectReference: {fileID: 1869833894}
     - target: {fileID: 5338574486962558028, guid: 5ba5427f5ad33ea44b824b40859d283f, type: 3}
       propertyPath: m_Name
       value: Player

@@ -1141,6 +1141,10 @@ PrefabInstance:
       value: childphoto
       objectReference: {fileID: 0}
     - target: {fileID: 2332639655532367464, guid: fe4fb3d9487eafa48bd1af205c5ae360, type: 3}
+      propertyPath: memoryVideo
+      value: 
+      objectReference: {fileID: 32900000, guid: 5d50672168ddade459947bb59ecf6032, type: 3}
+    - target: {fileID: 2332639655532367464, guid: fe4fb3d9487eafa48bd1af205c5ae360, type: 3}
       propertyPath: inspectSprite
       value: 
       objectReference: {fileID: 21300000, guid: ad8dca83f622d67428bd5d4fb366c082, type: 3}
@@ -1263,7 +1267,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 101527509141572579, guid: 08a48cfb1d7a8804e9cdb9686a780eaa, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.20237884
+      value: 0.20399788
       objectReference: {fileID: 0}
     - target: {fileID: 101527509141572579, guid: 08a48cfb1d7a8804e9cdb9686a780eaa, type: 3}
       propertyPath: m_LocalScale.y
@@ -1275,7 +1279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 101527509141572579, guid: 08a48cfb1d7a8804e9cdb9686a780eaa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.86
+      value: -26.8476
       objectReference: {fileID: 0}
     - target: {fileID: 101527509141572579, guid: 08a48cfb1d7a8804e9cdb9686a780eaa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1315,7 +1319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3971279898229891362, guid: 08a48cfb1d7a8804e9cdb9686a780eaa, type: 3}
       propertyPath: m_Size.x
-      value: 7.593173
+      value: 7.4718075
       objectReference: {fileID: 0}
     - target: {fileID: 3971279898229891362, guid: 08a48cfb1d7a8804e9cdb9686a780eaa, type: 3}
       propertyPath: m_Size.y
@@ -1323,7 +1327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3971279898229891362, guid: 08a48cfb1d7a8804e9cdb9686a780eaa, type: 3}
       propertyPath: m_Offset.x
-      value: 3.9791226
+      value: -3.1201181
       objectReference: {fileID: 0}
     - target: {fileID: 3971279898229891362, guid: 08a48cfb1d7a8804e9cdb9686a780eaa, type: 3}
       propertyPath: m_Offset.y
