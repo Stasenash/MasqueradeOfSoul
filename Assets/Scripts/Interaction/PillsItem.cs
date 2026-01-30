@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PillsItem : Interactable
+public class PillsItem : InspectableItem
 {
     private bool triggered;
 
