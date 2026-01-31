@@ -14,6 +14,7 @@ public class InspectManager : MonoBehaviour
     [SerializeField] private Image background;
 
     private bool isActive;
+    public bool IsInspecting;
 
     void Awake()
     {

@@ -16,6 +16,8 @@ public class VideoSequence : MonoBehaviour
     private bool canSkip;
     private bool quitAfter;
 
+    public bool IsPlaying;
+
     void Awake()
     {
         if (Instance != null)

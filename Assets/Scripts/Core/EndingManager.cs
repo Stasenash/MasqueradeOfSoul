@@ -8,17 +8,36 @@ public class EndingManager : MonoBehaviour
     [Header("Videos")]
     [SerializeField] private VideoClip goodEnding;
     [SerializeField] private VideoClip badEnding;
+    [SerializeField] private VideoClip maskEnding;
 
     [Header("Conditions")]
     [SerializeField] private int totalMemoriesRequired = 6;
 
+    private bool isFail;
+
     void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void ForceEnding()
+    {
+        isFail = true;
     }
 
     public void PlayEnding()
     {
+        if (isFail)
+        {
+            Play(maskEnding);
+        }
         // ÕÎÐÎØÀß êîíöîâêà
         if (MemoryManager.Instance.CollectedCount >= totalMemoriesRequired)
         {

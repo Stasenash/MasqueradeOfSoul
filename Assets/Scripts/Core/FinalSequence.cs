@@ -34,7 +34,7 @@ public class FinalSequence : MonoBehaviour
     {
         Sprite[] slides = type switch
         {
-            EndingType.Secret => secretEnding,
+            EndingType.Mask => secretEnding,
             EndingType.Good => goodEnding,
             _ => badEnding
         };

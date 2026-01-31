@@ -5,5 +5,5 @@ public enum EndingType
 {
     Bad,
     Good,
-    Secret
+    Mask
 }

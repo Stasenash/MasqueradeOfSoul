@@ -8,6 +8,8 @@ public class ExitConfirmController : MonoBehaviour
     [SerializeField] private Canvas canvas;
     private string targetScene;
 
+    public bool IsOpen;
+
     void Awake()
     {
         if (Instance != null)
