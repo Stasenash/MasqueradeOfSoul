@@ -14,6 +14,7 @@ public class EndingManager : MonoBehaviour
     [SerializeField] private int totalMemoriesRequired = 6;
 
     private bool isFail;
+    public bool IsEndingPlaying { get; private set; }
 
     void Awake()
     {
@@ -30,10 +31,12 @@ public class EndingManager : MonoBehaviour
     public void ForceEnding()
     {
         isFail = true;
+
     }
 
     public void PlayEnding()
     {
+        IsEndingPlaying = true;
         if (isFail)
         {
             Play(maskEnding);
@@ -53,7 +56,7 @@ public class EndingManager : MonoBehaviour
     {
         VideoSequence.Instance.Play(
             clip: clip,
-            allowSkip: false,
+            allowSkip: true,
             quitAtEnd: true
         );
     }

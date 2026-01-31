@@ -47,9 +47,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 7140709703427348372}
   maskImage: {fileID: 1457229230272731416}
-  startDelay: 20
+  fixedClicks: 14
+  fixedDuration: 2.5
+  movementStrength: 0.4
+  baseMaskScale: 1
+  startDelay: 10
   baseDuration: 3
   minDuration: 0.8
+  minInterval: 4
   baseClicks: 5
 --- !u!1 &5399699353372694810
 GameObject:
@@ -185,10 +190,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7754906358107779831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1104, y: 622}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1770757818128702055
 CanvasRenderer:

@@ -10,10 +10,20 @@ public class MaskAttackManager : MonoBehaviour
     [SerializeField] private Canvas canvas;
     [SerializeField] private Image maskImage;
 
+    [Header("Mask Difficulty (Fixed)")]
+[SerializeField] private int fixedClicks = 15;
+[SerializeField] private float fixedDuration = 2.5f;
+[SerializeField] private float movementStrength = 0.4f;
+[SerializeField] private float baseMaskScale = 0.85f;
+private Vector3 baseScale;
+
+
     [Header("Timing")]
-    [SerializeField] private float startDelay = 20f;
+    [SerializeField] private float startDelay = 10f;
     [SerializeField] private float baseDuration = 3f;
     [SerializeField] private float minDuration = 0.8f;
+
+[SerializeField] private float minInterval = 4f;
 
     [Header("Difficulty")]
     [SerializeField] private int baseClicks = 5;
@@ -22,6 +32,7 @@ public class MaskAttackManager : MonoBehaviour
     private int requiredClicks;
     private int currentClicks;
     private bool active;
+
 
     private AnimationCurve durationCurve;
     private AnimationCurve clicksCurve;
@@ -116,10 +127,13 @@ void Awake()
         {
             if (CanAttack())
                 yield return StartCoroutine(TriggerAttack());
-
-            yield return new WaitForSeconds(
-                Mathf.Max(5f, startDelay - attackCount * 2f)
-            );
+                float interval =
+    Mathf.Lerp(
+        startDelay,
+        minInterval,
+        1f - Mathf.Exp(-attackCount * 0.4f)
+    );
+            yield return new WaitForSeconds(interval);
         }
     }
 
@@ -128,51 +142,43 @@ void Awake()
     // =========================
 
     private IEnumerator TriggerAttack()
+{
+    attackCount++;
+
+    requiredClicks = fixedClicks;
+    currentClicks = 0;
+    active = true;
+
+    canvas.gameObject.SetActive(true);
+    baseScale = Vector3.one * baseMaskScale;
+maskImage.transform.localScale = baseScale;
+
+    maskRect.anchoredPosition = basePosition;
+
+    float timer = fixedDuration;
+
+    while (timer > 0f && currentClicks < requiredClicks)
     {
-        attackCount++;
+        timer -= Time.unscaledDeltaTime;
 
-        float t = attackCount;
+        // лёгкое движение, всегда одинаковое
+        Vector2 offset = new Vector2(
+            Mathf.Sin(Time.unscaledTime * 10f),
+            Mathf.Cos(Time.unscaledTime * 6f)
+        ) * 20f * movementStrength;
 
-        float duration = Mathf.Max(
-            minDuration,
-            baseDuration * durationCurve.Evaluate(t)
-        );
+        maskRect.anchoredPosition = basePosition + offset;
 
-        requiredClicks = Mathf.CeilToInt(
-            baseClicks * clicksCurve.Evaluate(t)
-        );
-
-        float movementStrength = movementCurve.Evaluate(t);
-
-        currentClicks = 0;
-        active = true;
-
-        canvas.gameObject.SetActive(true);
-        maskRect.anchoredPosition = basePosition;
-
-        float timer = duration;
-
-        while (timer > 0f && currentClicks < requiredClicks)
-        {
-            timer -= Time.unscaledDeltaTime;
-
-            // ДВИЖЕНИЕ МАСКИ
-            Vector2 offset = new Vector2(
-                Mathf.Sin(Time.unscaledTime * 11f),
-                Mathf.Cos(Time.unscaledTime * 7f)
-            ) * 25f * movementStrength;
-
-            maskRect.anchoredPosition = basePosition + offset;
-
-            yield return null;
-        }
-
-        canvas.gameObject.SetActive(false);
-        active = false;
-
-        if (currentClicks < requiredClicks)
-            Fail();
+        yield return null;
     }
+
+    canvas.gameObject.SetActive(false);
+    active = false;
+
+    if (currentClicks < requiredClicks)
+        Fail();
+}
+
 
     // =========================
     // INPUT
@@ -182,14 +188,20 @@ void Awake()
     {
         if (!active) return;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            currentClicks++;
+    bool mouseClick = Input.GetMouseButtonDown(0);
+    bool spacePress = Input.GetKeyDown(KeyCode.Space);
 
-            // микро-фидбек
-            maskImage.transform.localScale =
-                Vector3.one * (1f + Random.Range(-0.07f, 0.07f));
-        }
+    if (mouseClick || spacePress)
+    {
+        // пробел менее эффективен
+        int power = mouseClick ? 1 : 1;
+
+        currentClicks += power;
+
+        maskImage.transform.localScale =
+    baseScale * (1f + Random.Range(-0.05f, 0.05f));
+
+    }
     }
 
     // =========================
@@ -211,6 +223,9 @@ void Awake()
 
     private bool CanAttack()
     {
+        if (EndingManager.Instance != null &&
+            EndingManager.Instance.IsEndingPlaying)
+            return false;
         if (InspectManager.Instance != null &&
             InspectManager.Instance.IsInspecting)
             return false;
