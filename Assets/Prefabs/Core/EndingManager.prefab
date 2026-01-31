@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6659203446720585732}
   - component: {fileID: 4476672499547174191}
+  - component: {fileID: 8999139577109564253}
   m_Layer: 0
   m_Name: EndingManager
   m_TagString: Untagged
@@ -48,3 +49,17 @@ MonoBehaviour:
   badEnding: {fileID: 32900000, guid: 5a6f9d3ed6b92414ba8f782133fdb9df, type: 3}
   maskEnding: {fileID: 32900000, guid: b45d24173ca84a140a852684031c44c9, type: 3}
   totalMemoriesRequired: 6
+--- !u!114 &8999139577109564253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694093272657003026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756a83bc52310da449dd35e60ae8fab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameplaySceneName: Bedroom
+  introClip: {fileID: 32900000, guid: ef4ac4a4e6aa1b24590a304934f2df6b, type: 3}

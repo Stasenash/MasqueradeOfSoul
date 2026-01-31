@@ -18,6 +18,8 @@ public class EndingManager : MonoBehaviour
     public bool IsEndingPlaying { get; private set; }
     public EndingType LastEnding { get; private set; }
 
+    public static bool IntroPlayed = false;
+
     public void OnEndingStarted()
 {
     IsEndingPlaying = true;
