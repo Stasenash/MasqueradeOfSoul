@@ -16,6 +16,7 @@ public class Door : Interactable
             ExitConfirmController.Instance.Show(targetScene);
             return;
         }
+        AudioManager.Instance.PlayDoorOpen();
         Debug.Log("Set spawn: " + targetSpawnId);
         SceneLoader.Instance.LoadScene(targetScene);
     }

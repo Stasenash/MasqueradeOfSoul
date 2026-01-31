@@ -27,6 +27,7 @@ public class MemoryItem : InspectableItem
         if (MemoryManager.Instance.IsMemoryCollected(memoryId))
             return;
         MemoryManager.Instance.CollectMemory(memoryId);
+        AudioManager.Instance.PlayInspectMemory();
         StartCoroutine(PlayVideoNextFrame());
     }
 

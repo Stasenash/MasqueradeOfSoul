@@ -58,6 +58,8 @@ public class VideoSequence : MonoBehaviour
 
     private IEnumerator PlayRoutine(VideoClip clip)
     {
+        AudioManager.Instance.PauseMusic();
+
         isPlaying = true;
         Time.timeScale = 0f;
         AudioListener.pause = false;
@@ -86,6 +88,13 @@ public class VideoSequence : MonoBehaviour
 
     private void StopVideo()
     {
+        AudioManager.Instance.ResumeMusic();
+
+        if (EndingManager.Instance != null &&
+    EndingManager.Instance.IsIntroPlaying)
+{
+    EndingManager.Instance.MarkIntroPlayed();
+}
         if (stopped) return;
         stopped = true;
 

@@ -14,11 +14,13 @@ public class EndingManager : MonoBehaviour
     [Header("Conditions")]
     [SerializeField] private int totalMemoriesRequired = 6;
 
+
+    public bool IntroPlayed { get; private set; }
+public bool IsIntroPlaying { get; private set; }
     private bool endingForced;
     public bool IsEndingPlaying { get; private set; }
     public EndingType LastEnding { get; private set; }
 
-    public static bool IntroPlayed = false;
 
     public void OnEndingStarted()
 {
@@ -30,7 +32,16 @@ public class EndingManager : MonoBehaviour
     if (MemoryManager.Instance != null)
         MemoryManager.Instance.OnGameEnded();
 }
+public void StartIntro()
+{
+    IsIntroPlaying = true;
+}
 
+public void MarkIntroPlayed()
+{
+    IntroPlayed = true;
+    IsIntroPlaying = false;
+}
 
     void Awake()
     {

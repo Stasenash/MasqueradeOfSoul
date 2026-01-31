@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     private float inputX;
     private Vector3 baseScale;
 
+    private float stepTimer;
+    [SerializeField] private float stepInterval = 0.4f;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -27,6 +30,16 @@ public class PlayerMovement : MonoBehaviour
         }
 
         inputX = Input.GetAxisRaw("Horizontal");
+
+        if (Mathf.Abs(inputX) > 0.1f)
+    {
+        stepTimer -= Time.deltaTime;
+        if (stepTimer <= 0f)
+        {
+            AudioManager.Instance.PlayFootstep();
+            stepTimer = 0.4f;
+        }
+    }
 
         // Разворот
         if (Mathf.Abs(inputX) > 0.01f)

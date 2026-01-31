@@ -150,6 +150,7 @@ void Awake()
 
     private IEnumerator TriggerAttack()
 {
+    AudioManager.Instance.PlayMaskAppear();
     attackCount++;
 
     requiredClicks = fixedClicks;
@@ -166,6 +167,7 @@ maskImage.transform.localScale = baseScale;
 
     while (timer > 0f && currentClicks < requiredClicks)
     {
+
         timer -= Time.unscaledDeltaTime;
 
         // лёгкое движение, всегда одинаковое
@@ -178,6 +180,7 @@ maskImage.transform.localScale = baseScale;
 
         yield return null;
     }
+        AudioManager.Instance.PlayMaskCrash();
 
     canvas.gameObject.SetActive(false);
     active = false;
@@ -200,6 +203,7 @@ maskImage.transform.localScale = baseScale;
 
     if (mouseClick || spacePress)
     {
+        AudioManager.Instance.PlayMaskHit();
         // пробел менее эффективен
         int power = mouseClick ? 1 : 1;
 

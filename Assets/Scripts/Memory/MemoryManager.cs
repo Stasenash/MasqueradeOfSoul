@@ -60,8 +60,8 @@ public class MemoryManager : MonoBehaviour
     private IEnumerator ApplyMaskNextFrame()
     {
         if (gameEnded) yield break;
-        if (visuals == null)
-            yield break;
+        //if (visuals == null)
+            //yield break;
         yield return null;
 
         visuals = FindObjectOfType<PlayerVisualController>();
@@ -98,7 +98,7 @@ public class MemoryManager : MonoBehaviour
 
     private void UpdateMaskStage()
     {
-        if (visuals == null) return;
+        //if (visuals == null) return;
 
         int stage = CalculateCurrentStage();
 

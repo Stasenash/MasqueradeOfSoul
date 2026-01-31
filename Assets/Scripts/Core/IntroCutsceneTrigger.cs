@@ -22,18 +22,19 @@ public class IntroCutsceneTrigger : MonoBehaviour
         if (scene.name != gameplaySceneName)
             return;
 
-        if (EndingManager.IntroPlayed)
-            return;
+        if (EndingManager.Instance == null)
+    return;
 
-        EndingManager.IntroPlayed = true;
+if (!EndingManager.Instance.IntroPlayed)
+{
+    EndingManager.Instance.StartIntro();
 
-        if (VideoSequence.Instance != null)
-        {
-            VideoSequence.Instance.Play(
-                clip: introClip,
-                allowSkip: true,
-                quitAtEnd: false
-            );
-        }
+    VideoSequence.Instance.Play(
+        introClip,
+        allowSkip: true,
+        quitAtEnd: false
+    );
+}
+           
     }
 }

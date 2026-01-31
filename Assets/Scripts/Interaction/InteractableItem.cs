@@ -6,6 +6,7 @@ public class InteractableItem : Interactable
 {
     public override void Interact()
     {
+        AudioManager.Instance.PlayInspectItem();
         Debug.Log("Interact!");
     }
 }
