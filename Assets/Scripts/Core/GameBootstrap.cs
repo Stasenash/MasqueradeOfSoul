@@ -10,13 +10,19 @@ public class GameBootstrap : MonoBehaviour
     [SerializeField] private GameObject videoSequencePrefab;
     [SerializeField] private GameObject endingResultUIPrefab;
     [SerializeField] private GameObject globalEventSystemPrefab;
+    [SerializeField] private GameObject audioManagerPrefab;
+    [SerializeField] private GameObject resetManagerPrefab;
 
     void Awake()
     {
-        Instantiate(globalEventSystemPrefab);
+        Instantiate(audioManagerPrefab);
+        if (FindObjectOfType<GlobalEventSystem>() == null)
+            Instantiate(globalEventSystemPrefab);
         Instantiate(videoSequencePrefab);
         Instantiate(endingManagerPrefab);
         Instantiate(maskAttackPrefab);
         Instantiate(endingResultUIPrefab);
+        if (FindObjectOfType<ResetManager>() == null)
+            Instantiate(resetManagerPrefab);
     }
 }

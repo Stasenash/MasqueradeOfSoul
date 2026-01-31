@@ -38,14 +38,14 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (this == null || musicSource == null)
+        return;
         if (scene.name == "MainMenu")
     {
         PlayMenuMusic();
         return;
     }
-
     // если сейчас будет интро Ч музыку Ќ≈ запускаем
-    Debug.Log(EndingManager.Instance.IntroPlayed);
     if (!EndingManager.Instance.IntroPlayed)
         return;
 
@@ -86,6 +86,11 @@ public class AudioManager : MonoBehaviour
         musicSource.loop = true;
         musicSource.Play();
     }
+
+    void OnDestroy()
+{
+    SceneManager.sceneLoaded -= OnSceneLoaded;
+}
 
     // ===== SFX =====
 

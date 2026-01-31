@@ -15,7 +15,7 @@ public class SceneLoader : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     public void LoadScene(string sceneName)
@@ -25,6 +25,15 @@ public class SceneLoader : MonoBehaviour
 
     public void Start()
     {
-        SceneLoader.Instance.LoadScene("MainMenu");
+        Debug.Log("SceneLoader START");
+        StartCoroutine(LoadFlow());
+    }
+
+    private IEnumerator LoadFlow()
+    {
+        yield return null; // 1 кадр, чтобы Bootstrap успел
+        Debug.Log("Loading MainMenu");
+        // после reset всегда идём в главное меню
+        SceneManager.LoadScene("MainMenu");
     }
 }

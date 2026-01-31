@@ -49,14 +49,8 @@ public class EndingResultUI : MonoBehaviour
 
     public void GoToMenu()
     {
-        if (MemoryManager.Instance != null)
-    MemoryManager.Instance.OnGameEnded();
-
-
-        Time.timeScale = 1f;
-    AudioListener.pause = false;
-    StartCoroutine(LoadMenuSafe());
         gameObject.SetActive(false);
+        ResetManager.Instance.FullResetAndGoToMenu();
     }
 
     private IEnumerator LoadMenuSafe()
