@@ -154,7 +154,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -252,9 +252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoCanvas: {fileID: 5696169717002365239}
-  videoImage: {fileID: 5020602462960456494}
   videoPlayer: {fileID: 4988696931429939638}
-  IsPlaying: 0
+  audioSource: {fileID: 6410437817396546340}
 --- !u!1 &8020224789444855509
 GameObject:
   m_ObjectHideFlags: 0

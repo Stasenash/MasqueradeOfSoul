@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2116390587137ff43955bba9c682d611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goodEnding: {fileID: 32900000, guid: 8b5119f54a62f254881d1772220196b5, type: 3}
-  badEnding: {fileID: 32900000, guid: 5a6f9d3ed6b92414ba8f782133fdb9df, type: 3}
-  maskEnding: {fileID: 32900000, guid: b45d24173ca84a140a852684031c44c9, type: 3}
+  goodEnding: {fileID: 32900000, guid: 8bba4f7bd9aff4c458a1f67f8921f4f2, type: 3}
+  badEnding: {fileID: 32900000, guid: 7eaed87fc49eb8140a2d9d1e2820e8ed, type: 3}
+  maskEnding: {fileID: 32900000, guid: ab956cbe26d7bc64c9f04ef39cc47171, type: 3}
   totalMemoriesRequired: 6
 --- !u!114 &8999139577109564253
 MonoBehaviour:
@@ -62,4 +62,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplaySceneName: Bedroom
-  introClip: {fileID: 32900000, guid: ef4ac4a4e6aa1b24590a304934f2df6b, type: 3}
+  introClip: {fileID: 32900000, guid: 6ae5e096b66834943b142ad4432a1222, type: 3}

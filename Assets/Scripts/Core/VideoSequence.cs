@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Video;
-using UnityEngine.UI;
 using System.Collections;
 
 public class VideoSequence : MonoBehaviour
@@ -9,14 +8,13 @@ public class VideoSequence : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private Canvas videoCanvas;
-    [SerializeField] private RawImage videoImage;
     [SerializeField] private VideoPlayer videoPlayer;
+    [SerializeField] private AudioSource audioSource;
 
     private bool isPlaying;
     private bool canSkip;
     private bool quitAfter;
-
-    public bool IsPlaying;
+    private bool stopped;
 
     void Awake()
     {
@@ -29,7 +27,11 @@ public class VideoSequence : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        videoCanvas.gameObject.SetActive(false);
+        if (videoCanvas != null)
+            videoCanvas.gameObject.SetActive(false);
+
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -49,6 +51,7 @@ public class VideoSequence : MonoBehaviour
 
         canSkip = allowSkip;
         quitAfter = quitAtEnd;
+        stopped = false;
 
         StartCoroutine(PlayRoutine(clip));
     }
@@ -57,56 +60,55 @@ public class VideoSequence : MonoBehaviour
     {
         isPlaying = true;
         Time.timeScale = 0f;
+        AudioListener.pause = false;
 
         videoPlayer.Stop();
-        if (videoPlayer.targetTexture != null)
-        {
-            var rt = videoPlayer.targetTexture;
-            RenderTexture.active = rt;
-            GL.Clear(true, true, Color.black);
-            RenderTexture.active = null;
-        }
-        videoCanvas.gameObject.SetActive(true);
 
         videoPlayer.clip = clip;
-        videoPlayer.Prepare();
+        videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
+        videoPlayer.EnableAudioTrack(0, true);
+        videoPlayer.SetTargetAudioSource(0, audioSource);
 
+        videoPlayer.Prepare();
         while (!videoPlayer.isPrepared)
             yield return null;
 
+        if (videoCanvas != null)
+            videoCanvas.gameObject.SetActive(true);
+
         videoPlayer.Play();
 
-        while (videoPlayer.isPlaying)
+        while (videoPlayer.isPlaying && !stopped)
             yield return null;
 
         StopVideo();
-
     }
 
     private void StopVideo()
     {
-        Time.timeScale = 1f;
-        videoPlayer.Stop();
-        videoCanvas.gameObject.SetActive(false);
+        if (stopped) return;
+        stopped = true;
+
+        if (videoPlayer != null)
+            videoPlayer.Stop();
+
+        if (videoCanvas != null)
+            videoCanvas.gameObject.SetActive(false);
 
         Time.timeScale = 1f;
-
-        if (quitAfter)
-        {
-            EndingResultUI result = FindObjectOfType<EndingResultUI>(true);
-            result.Show(EndingManager.Instance.LastEnding);
-        }
+        AudioListener.pause = false;
 
         isPlaying = false;
 
+        if (quitAfter && EndingManager.Instance != null)
+        {
+            EndingResultUI result =
+                FindObjectOfType<EndingResultUI>(true);
+
+            if (result != null)
+                result.Show(EndingManager.Instance.LastEnding);
+        }
     }
 
-    private void QuitGame()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
-    }
+    public bool IsPlaying => isPlaying;
 }

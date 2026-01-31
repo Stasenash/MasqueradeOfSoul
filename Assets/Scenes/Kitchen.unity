@@ -816,7 +816,7 @@ PrefabInstance:
     - target: {fileID: 2332639655532367464, guid: fe4fb3d9487eafa48bd1af205c5ae360, type: 3}
       propertyPath: memoryVideo
       value: 
-      objectReference: {fileID: 32900000, guid: a41cfa368a7a91d4e8138d8e14a8c05e, type: 3}
+      objectReference: {fileID: 32900000, guid: c52d7bbfcad0c45438d2bc21f947ba74, type: 3}
     - target: {fileID: 2332639655532367464, guid: fe4fb3d9487eafa48bd1af205c5ae360, type: 3}
       propertyPath: inspectSprite
       value: 
