@@ -15,6 +15,8 @@ public class MemoryManager : MonoBehaviour
     private int currentStage = -1;
 
     private bool initialized = false;
+    private bool gameEnded;
+
 
     void Awake()
     {
@@ -28,6 +30,12 @@ public class MemoryManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void OnGameEnded()
+{
+    gameEnded = true;
+}
+
+
     void OnEnable()
     {
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
@@ -39,14 +47,21 @@ public class MemoryManager : MonoBehaviour
     }
 
     private void OnSceneLoaded(
+        
+
         UnityEngine.SceneManagement.Scene scene,
         UnityEngine.SceneManagement.LoadSceneMode mode)
     {
+        if (gameEnded) return;
+
         StartCoroutine(ApplyMaskNextFrame());
     }
 
     private IEnumerator ApplyMaskNextFrame()
     {
+        if (gameEnded) yield break;
+        if (visuals == null)
+            yield break;
         yield return null;
 
         visuals = FindObjectOfType<PlayerVisualController>();

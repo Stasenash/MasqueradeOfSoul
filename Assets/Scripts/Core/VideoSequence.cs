@@ -80,18 +80,25 @@ public class VideoSequence : MonoBehaviour
             yield return null;
 
         StopVideo();
+
     }
 
     private void StopVideo()
     {
+        Time.timeScale = 1f;
         videoPlayer.Stop();
         videoCanvas.gameObject.SetActive(false);
 
         Time.timeScale = 1f;
-        isPlaying = false;
 
         if (quitAfter)
-            QuitGame();
+        {
+            EndingResultUI result = FindObjectOfType<EndingResultUI>(true);
+            result.Show(EndingManager.Instance.LastEnding);
+        }
+
+        isPlaying = false;
+
     }
 
     private void QuitGame()

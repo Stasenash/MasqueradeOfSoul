@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class EndingManager : MonoBehaviour
@@ -13,11 +14,25 @@ public class EndingManager : MonoBehaviour
     [Header("Conditions")]
     [SerializeField] private int totalMemoriesRequired = 6;
 
-    private bool isFail;
+    private bool endingForced;
     public bool IsEndingPlaying { get; private set; }
+    public EndingType LastEnding { get; private set; }
+
+    public void OnEndingStarted()
+{
+    IsEndingPlaying = true;
+
+    if (MaskAttackManager.Instance != null)
+        MaskAttackManager.Instance.DisablePermanently();
+
+    if (MemoryManager.Instance != null)
+        MemoryManager.Instance.OnGameEnded();
+}
+
 
     void Awake()
     {
+        Debug.Log("EndingManager Awake");
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -30,25 +45,39 @@ public class EndingManager : MonoBehaviour
 
     public void ForceEnding()
     {
-        isFail = true;
+        endingForced = true;
+        IsEndingPlaying = true;
+        LastEnding = EndingType.Mask;
+        PlayEnding();
 
     }
 
     public void PlayEnding()
     {
-        IsEndingPlaying = true;
-        if (isFail)
+        OnEndingStarted();
+        if (MaskAttackManager.Instance != null)
+    {
+        MaskAttackManager.Instance.DisablePermanently();
+    }
+
+        if (endingForced)
         {
+            LastEnding = EndingType.Mask;
             Play(maskEnding);
+            return;
         }
         // ’Œ–Œÿ¿ﬂ ÍÓÌˆÓ‚Í‡
         if (MemoryManager.Instance.CollectedCount >= totalMemoriesRequired)
         {
+            LastEnding = EndingType.Good; 
             Play(goodEnding);
+            return;
         }
         else // œÀŒ’¿ﬂ
         {
+            LastEnding = EndingType.Bad;
             Play(badEnding);
+            return;
         }
     }
 
@@ -59,5 +88,17 @@ public class EndingManager : MonoBehaviour
             allowSkip: true,
             quitAtEnd: true
         );
+    }
+
+    public static void DisableAllRaycastersExcept(Canvas allowed)
+    {
+        GraphicRaycaster[] raycasters =
+            Object.FindObjectsOfType<GraphicRaycaster>(true);
+
+        foreach (var r in raycasters)
+        {
+            if (allowed == null || r.GetComponentInParent<Canvas>() != allowed)
+                r.enabled = false;
+        }
     }
 }

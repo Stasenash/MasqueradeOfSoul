@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MaskAttackManager : MonoBehaviour
 {
@@ -22,6 +23,12 @@ private Vector3 baseScale;
     [SerializeField] private float startDelay = 10f;
     [SerializeField] private float baseDuration = 3f;
     [SerializeField] private float minDuration = 0.8f;
+
+    [SerializeField] private string[] disabledScenes =
+{
+    "MainMenu",
+    "Loader"
+};
 
 [SerializeField] private float minInterval = 4f;
 
@@ -212,9 +219,6 @@ maskImage.transform.localScale = baseScale;
     {
         Debug.Log("MASK TOOK YOU");
         EndingManager.Instance.ForceEnding();
-
-
-    EndingManager.Instance.PlayEnding();
     }
 
     // =========================
@@ -223,6 +227,13 @@ maskImage.transform.localScale = baseScale;
 
     private bool CanAttack()
     {
+        string sceneName = SceneManager.GetActiveScene().name;
+
+    foreach (var s in disabledScenes)
+    {
+        if (sceneName == s)
+            return false;
+    }
         if (EndingManager.Instance != null &&
             EndingManager.Instance.IsEndingPlaying)
             return false;
@@ -240,4 +251,15 @@ maskImage.transform.localScale = baseScale;
 
         return true;
     }
+
+    public void DisablePermanently()
+{
+    StopAllCoroutines();
+    active = false;
+    enabled = false;
+
+    if (canvas != null)
+        canvas.gameObject.SetActive(false);
+}
+
 }

@@ -25,6 +25,6 @@ public class SceneLoader : MonoBehaviour
 
     public void Start()
     {
-        SceneLoader.Instance.LoadScene("Bedroom");
+        SceneLoader.Instance.LoadScene("MainMenu");
     }
 }
